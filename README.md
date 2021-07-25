@@ -3,12 +3,17 @@
 Copyright (c) 2017-2018, The Alloy Developers.   
 Portions Copyright (c) 2012-2017, The CryptoNote Developers, The Bytecoin Developers.
 
+Copyright (c) all changes after 1st June 2021.
+
+
 # Download Releases
-https://github.com/alloyproject/alloy/releases
+?URL?
 
 # GUI Wallet
-Located Here: https://github.com/alloyproject/alloy-gui
+Located Here: ?URL?
 
+# Discord
+https://discord.gg/WBny6kdzaV
 
 # How to Compile
 
@@ -16,7 +21,7 @@ Located Here: https://github.com/alloyproject/alloy-gui
 
 ```sudo apt-get -y install gcc-4.8 g++-4.8  git cmake```
 
-```git clone https://github.com/alloyproject/alloy```
+```git clone ```
 
 ```cd alloy```
 
