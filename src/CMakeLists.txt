@@ -28,55 +28,47 @@ file(GLOB_RECURSE Miner Miner/*)
 
 source_group("" FILES $${Common}  ${Crypto} ${CryptoNoteCore} ${CryptoNoteProtocol} ${Daemon} ${JsonRpcServer} ${Http} ${Logging} ${NodeRpcProxy} ${P2p} ${Rpc} ${Serialization} ${SimpleWallet} ${System} ${Transfers} ${Wallet} ${WalletLegacy})
 
-add_library(BlockchainExplorer ${BlockchainExplorer})
 add_library(Crypto ${Crypto})
 add_library(Http ${Http})
-add_library(InProcessNode ${InProcessNode})
-add_library(Logging ${Logging})
-add_library(NodeRpcProxy ${NodeRpcProxy})
-add_library(Rpc ${Rpc})
-add_library(P2P ${CryptoNoteProtocol} ${P2p})
-add_library(Serialization ${Serialization})
 add_library(System ${System})
-add_library(Transfers ${Transfers})
-add_library(PaymentGate ${PaymentGate})
 add_library(JsonRpcServer ${JsonRpcServer})
-
+add_library(Transfers ${Transfers})
+add_library(NodeRpcProxy ${NodeRpcProxy})
+add_library(InProcessNode ${InProcessNode})
+add_library(BlockchainExplorer ${BlockchainExplorer})
+add_library(PaymentGate ${PaymentGate})
+add_library(Serialization ${Serialization})
 add_library(Common ${Common})
-target_link_libraries(Common ${CMAKE_THREAD_LIBS_INIT})
+add_library(Logging ${Logging})
+
+add_library(P2P ${CryptoNoteProtocol} ${P2p})
+add_dependencies(P2P version)
+target_link_libraries(P2P CryptoNoteCore Logging miniupnpc::miniupnpc)
+
+add_library(Rpc ${Rpc})
+add_dependencies(Rpc version)
+target_link_libraries(Rpc CryptoNoteCore Logging P2P)
 
 add_library(CryptoNoteCore ${CryptoNoteCore})
-target_link_libraries(CryptoNoteCore Common Crypto Logging Serialization)
+target_link_libraries(CryptoNoteCore Common Logging Crypto P2P Rpc Http Serialization System RocksDB::rocksdb)
 
 add_library(Wallet ${Wallet} ${WalletLegacy})
 target_link_libraries(Wallet ${CMAKE_THREAD_LIBS_INIT})
 
 add_executable(Daemon ${Daemon})
+add_dependencies(Daemon version)
+target_link_libraries(Daemon P2P Rpc Serialization System Http Logging CryptoNoteCore Crypto Common miniupnpc::miniupnpc RocksDB::rocksdb Boost::program_options Boost::filesystem)
+
 add_executable(SimpleWallet ${SimpleWallet})
+add_dependencies(SimpleWallet version)
+target_link_libraries(SimpleWallet Wallet NodeRpcProxy Transfers Rpc P2P miniupnpc::miniupnpc Http Serialization CryptoNoteCore System Logging Common Crypto Boost::program_options Boost::filesystem ${CMAKE_THREAD_LIBS_INIT})
 
 add_executable(PaymentGateService ${PaymentGateService})
-target_include_directories(PaymentGateService PUBLIC ${UPNPC_CFG_INCLUDE_DIRS} ${ROCKS_CFG_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} )
-target_compile_options(PaymentGateService PUBLIC ${UPNPC_CFG_CFLAGS} ${ROCKS_CFG_CFLAGS})
-target_link_libraries(PaymentGateService PaymentGate JsonRpcServer Wallet NodeRpcProxy Transfers P2P CryptoNoteCore Crypto Rpc Http Serialization System Logging Common InProcessNode BlockchainExplorer ${UPNPC_CFG_LIBRARIES} ${ROCKS_CFG_LIBRARIES} ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(PaymentGateService PaymentGate JsonRpcServer Wallet NodeRpcProxy Transfers P2P CryptoNoteCore Crypto Rpc Http Serialization System Logging Common InProcessNode BlockchainExplorer miniupnpc::miniupnpc RocksDB::rocksdb Boost::program_options Boost::filesystem ${CMAKE_THREAD_LIBS_INIT})
 add_dependencies(PaymentGateService version)
 
 add_executable(Miner ${Miner})
-target_link_libraries(Miner CryptoNoteCore Rpc Serialization System Http Logging Common Crypto ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
-
-target_include_directories(P2P PUBLIC ${UPNPC_CFG_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} )
-target_link_libraries(P2P CryptoNoteCore Logging ${UPNPC_CFG_LIBRARIES} ${Boost_LIBRARIES} )
-target_compile_options(P2P PUBLIC ${UPNPC_CFG_CFLAGS} )
-target_link_directories(P2P PUBLIC ${UPNPC_CFG_LIBRARY_DIRS} )
-
-target_link_libraries(Rpc CryptoNoteCore Logging P2P)
-target_link_libraries(CryptoNoteCore Common Logging Crypto P2P Rpc Http Serialization System ${Boost_LIBRARIES})
-target_link_libraries(Daemon P2P Rpc Serialization System Http Logging CryptoNoteCore Crypto Common ${UPNPC_CFG_LIBRARIES} ${ROCKS_CFG_LIBRARIES} ${Boost_LIBRARIES} )
-target_link_libraries(SimpleWallet Wallet NodeRpcProxy Transfers Rpc P2P ${UPNPC_CFG_LIBRARIES} Http Serialization CryptoNoteCore System Logging Common Crypto ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
-
-add_dependencies(Rpc version)
-add_dependencies(Daemon version)
-add_dependencies(SimpleWallet version)
-add_dependencies(P2P version)
+target_link_libraries(Miner CryptoNoteCore Rpc Serialization System Http Logging Common Crypto Boost::program_options Boost::filesystem ${CMAKE_THREAD_LIBS_INIT})
 
 set_property(TARGET Daemon PROPERTY OUTPUT_NAME "alloyd")
 set_property(TARGET SimpleWallet PROPERTY OUTPUT_NAME "simplewallet")
