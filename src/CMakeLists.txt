@@ -92,7 +92,7 @@ file(GLOB_RECURSE TRANSFERS_HDR Transfers/*.h)
 file(GLOB_RECURSE WALLET_HDR Wallet/*.h)
 
 set_target_properties(BlockchainExplorer PROPERTIES PUBLIC_HEADER "${BLOCKCHAINEXPLORER_HDR}")
-set_target_properties(Common PROPERTIES PUBLIC_HEADER "${COMON_HDR}")
+set_target_properties(Common PROPERTIES PUBLIC_HEADER "${COMMON_HDR}")
 set_target_properties(Crypto PROPERTIES PUBLIC_HEADER "${CRYPTO_HDR}")
 set_target_properties(CryptoNoteCore PROPERTIES PUBLIC_HEADER "${CRYPTONOTECORE_HDR};CryptoNoteConfig.h")
 set_target_properties(Http PROPERTIES PUBLIC_HEADER "${HTTP_HDR}")
