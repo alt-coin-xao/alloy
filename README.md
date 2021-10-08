@@ -16,7 +16,7 @@ Located Here: http://www.alloy.hopto.org  (coming soon)
 # Discord
 https://discord.gg/gmvM5KEHFz
 
-# How to Compile Linux, will download what it needs
+# How to Compile Linux, it will download what it needs.
 
 _TODO remove this for next release_ 
 
