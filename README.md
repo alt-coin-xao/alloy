@@ -1,5 +1,6 @@
 # Alloy
 
+Copyright (C) 2021-Now, alloy.hopto Developers
 Copyright (c) 2017-2018, The Alloy Developers.   
 Portions Copyright (c) 2012-2017, The CryptoNote Developers, The Bytecoin Developers.
 
@@ -7,13 +8,13 @@ Copyright (c) all changes after 1st June 2021.
 
 
 # Download Releases
-?URL?
+http://www.alloy.hopto.org   (coming soon)
 
 # GUI Wallet
-Located Here: ?URL?
+Located Here: http://www.alloy.hopto.org  (coming soon)
 
 # Discord
-https://discord.gg/WBny6kdzaV
+https://discord.gg/gmvM5KEHFz
 
 # How to Compile
 
