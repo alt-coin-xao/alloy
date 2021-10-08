@@ -20,7 +20,7 @@ https://discord.gg/gmvM5KEHFz
 
 _TODO remove this for next release_ 
 
-Please use: https://github.com/alt-coin-xao/alloy/releases/tag/v.3.2-beta until the build chain is complete or branch fixcrashandbuild
+Please use: https://github.com/alt-coin-xao/alloy/releases/tag/v3.2.0-alpha until the build chain is complete or branch fixcrashandbuild
 
 ```git clone ```
 
