@@ -18,6 +18,9 @@ https://discord.gg/gmvM5KEHFz
 
 # How to Compile Linux, will download what it needs
 
+_TODO remove this for next release_ 
+Please use: https://github.com/alt-coin-xao/alloy/releases/tag/v.3.2-beta until the build chain is complete or branch fixcrashandbuild
+
 ```git clone ```
 
 ```cd alloy```
