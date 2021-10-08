@@ -16,11 +16,7 @@ Located Here: http://www.alloy.hopto.org  (coming soon)
 # Discord
 https://discord.gg/gmvM5KEHFz
 
-# How to Compile
-
-```sudo apt-get -y install build-essential libssl-dev libboost-all-dev```
-
-```sudo apt-get -y install gcc-4.8 g++-4.8  git cmake```
+# How to Compile Linux, will download what it needs
 
 ```git clone ```
 
@@ -31,9 +27,6 @@ https://discord.gg/gmvM5KEHFz
 ```cmake ..```
 
 ```make```
-
-
-
 
 ## Introduction
 
