@@ -144,7 +144,7 @@ namespace parameters {
 const std::initializer_list<const char*> SEED_NODES {
 "node.mine2gether.com:1810",
 "alloy.hopto.org:1810",
-"alloy1.hopto.org:1811",
+"alloy1.hopto.org:1820",
 };
 
 struct CheckpointData {
