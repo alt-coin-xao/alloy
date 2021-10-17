@@ -15,7 +15,6 @@ file(GLOB_RECURSE P2p P2p/*)
 file(GLOB_RECURSE Rpc Rpc/*)
 file(GLOB_RECURSE Serialization Serialization/*)
 file(GLOB_RECURSE SimpleWallet SimpleWallet/*)
-file(GLOB_RECURSE System System/* Platform/Linux/System/* Platform/Posix/System/*)
 file(GLOB_RECURSE Transfers Transfers/*)
 file(GLOB_RECURSE Wallet Wallet/*)
 file(GLOB_RECURSE WalletLegacy WalletLegacy/*)
@@ -23,6 +22,15 @@ file(GLOB_RECURSE JsonRpcServer JsonRpcServer/*)
 file(GLOB_RECURSE PaymentGate PaymentGate/*)
 file(GLOB_RECURSE PaymentGateService PaymentGateService/*)
 file(GLOB_RECURSE Miner Miner/*)
+
+
+if(MSVC)
+file(GLOB_RECURSE System System/* Platform/Windows/System/*)
+elseif(APPLE)
+file(GLOB_RECURSE System System/* Platform/OSX/System/* Platform/Posix/System/*)
+else()
+file(GLOB_RECURSE System System/* Platform/Linux/System/* Platform/Posix/System/*)
+endif()
 
 source_group("" FILES $${Common}  ${Crypto} ${CryptoNoteCore} ${CryptoNoteProtocol} ${Daemon} ${JsonRpcServer} ${Http} ${Logging} ${NodeRpcProxy} ${P2p} ${Rpc} ${Serialization} ${SimpleWallet} ${System} ${Transfers} ${Wallet} ${WalletLegacy})
 
