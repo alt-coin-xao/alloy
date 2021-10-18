@@ -78,6 +78,7 @@ elseif(APPLE)
 else()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -fno-inline")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -fno-inline")
+add_definitions("-D_DEFAULT_SOURCE -D_GNU_SOURCE")
 endif()
 
 include_directories(include src "${CMAKE_CURRENT_BINARY_DIR}/version")
