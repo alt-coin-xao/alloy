@@ -73,8 +73,12 @@ find_package(GTest CONFIG REQUIRED)
 
 set(CMAKE_FIND_DEBUG_MODE FALSE)
 
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -fno-inline")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -fno-inline")
+if(MSVC)
+elseif(APPLE)
+else()
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -fno-inline")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -fno-inline")
+endif()
 
 include_directories(include src "${CMAKE_CURRENT_BINARY_DIR}/version")
 link_libraries(Boost::boost)
