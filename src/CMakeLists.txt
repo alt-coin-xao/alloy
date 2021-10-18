@@ -20,7 +20,6 @@ file(GLOB_RECURSE PaymentGate PaymentGate/*)
 file(GLOB_RECURSE PaymentGateService PaymentGateService/*)
 file(GLOB_RECURSE Miner Miner/*)
 
-
 if(MSVC)
 file(GLOB_RECURSE System System/* Platform/Windows/System/*)
 elseif(APPLE)
