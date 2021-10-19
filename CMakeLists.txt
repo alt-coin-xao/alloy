@@ -97,8 +97,6 @@ else()
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Platform/Posix)
 endif()
 
-add_definitions("-D_DEFAULT_SOURCE -D_GNU_SOURCE")
-
 set(COMMIT_ID_IN_VERSION ON CACHE BOOL "Include commit ID in version")
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/version")
 
