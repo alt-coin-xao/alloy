@@ -86,6 +86,7 @@ link_libraries(Boost::boost)
 
 if(MSVC)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Platform/Windows)
+  include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Platform/msc)
 elseif(APPLE)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Platform/OSX)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Platform/Posix)
