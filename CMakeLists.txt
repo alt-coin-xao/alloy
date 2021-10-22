@@ -79,7 +79,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:10485760")
 elseif(APPLE)
 else()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -fno-inline")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -fno-inline")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -fno-inline -std=c++14")
 add_definitions("-D_DEFAULT_SOURCE -D_GNU_SOURCE")
 endif()
 
