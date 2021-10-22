@@ -10,6 +10,7 @@
 
 #include "BlockchainSynchronizer.h"
 
+#include <thread>
 #include <functional>
 #include <iostream>
 #include <sstream>
