@@ -140,11 +140,13 @@ namespace parameters {
 #define P2P_DEFAULT_INVOKE_TIMEOUT                      60 * 2 * 1000
 #define P2P_DEFAULT_HANDSHAKE_INVOKE_TIMEOUT            5000
 
-
+// 1810 is the standard port always
+// 1820 are secondary nodes that are temporary to give more network stability
 const std::initializer_list<const char*> SEED_NODES {
 "node.mine2gether.com:1810",
 "alloy.hopto.org:1810",
 "alloy1.hopto.org:1820",
+"wetlog.hopto.org:1810",
 };
 
 struct CheckpointData {
