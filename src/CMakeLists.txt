@@ -63,7 +63,7 @@ target_link_libraries(Wallet ${CMAKE_THREAD_LIBS_INIT})
 
 add_executable(Daemon ${Daemon})
 add_dependencies(Daemon version)
-target_link_libraries(Daemon P2P Rpc Serialization System Http Logging CryptoNoteCore Crypto Common miniupnpc::miniupnpc RocksDB::rocksdb Boost::program_options Boost::filesystem)
+target_link_libraries(Daemon P2P Rpc Serialization System Http Logging CryptoNoteCore Crypto Common miniupnpc::miniupnpc RocksDB::rocksdb Boost::program_options Boost::filesystem Boost::boost)
 
 add_executable(SimpleWallet ${SimpleWallet})
 add_dependencies(SimpleWallet version)
