@@ -40,7 +40,6 @@ add_library(JsonRpcServer ${JsonRpcServer})
 add_library(Logging ${Logging})
 add_library(NodeRpcProxy ${NodeRpcProxy})
 add_library(PaymentGate ${PaymentGate})
-add_library(Rpc ${Rpc})
 add_library(Serialization ${Serialization})
 add_library(System ${System})
 add_library(Transfers ${Transfers})
@@ -51,6 +50,9 @@ target_link_libraries(CryptoNoteCore Boost::boost)
 
 add_library(P2P ${CryptoNoteProtocol} ${P2p})
 target_link_libraries(P2P Boost::boost)
+
+add_library(Rpc ${Rpc})
+target_link_libraries(Rpc Boost::boost)
 
 add_dependencies(P2P version)
 add_dependencies(Rpc version)
