@@ -34,7 +34,6 @@ source_group("" FILES $${Common}  ${Crypto} ${CryptoNoteCore} ${CryptoNoteProtoc
 add_library(BlockchainExplorer ${BlockchainExplorer})
 add_library(Common ${Common})
 add_library(Crypto ${Crypto})
-add_library(CryptoNoteCore ${CryptoNoteCore})
 add_library(Http ${Http})
 add_library(InProcessNode ${InProcessNode})
 add_library(JsonRpcServer ${JsonRpcServer})
@@ -47,6 +46,9 @@ add_library(Serialization ${Serialization})
 add_library(System ${System})
 add_library(Transfers ${Transfers})
 add_library(Wallet ${Wallet} ${WalletLegacy})
+
+add_library(CryptoNoteCore ${CryptoNoteCore})
+target_link_libraries(CryptoNoteCore Boost::boost)
 
 add_dependencies(P2P version)
 add_dependencies(Rpc version)
