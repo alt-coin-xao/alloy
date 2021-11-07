@@ -44,15 +44,13 @@ add_library(Serialization ${Serialization})
 add_library(System ${System})
 add_library(Transfers ${Transfers})
 add_library(Wallet ${Wallet} ${WalletLegacy})
+add_library(Rpc ${Rpc})
 
 add_library(CryptoNoteCore ${CryptoNoteCore})
 target_link_libraries(CryptoNoteCore Boost::boost)
 
 add_library(P2P ${CryptoNoteProtocol} ${P2p})
 target_link_libraries(P2P Boost::boost)
-
-add_library(Rpc ${Rpc})
-target_link_libraries(Rpc Boost::boost)
 
 add_dependencies(P2P version)
 add_dependencies(Rpc version)
