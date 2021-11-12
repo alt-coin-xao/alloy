@@ -32,7 +32,7 @@ Please use: https://github.com/alt-coin-xao/alloy/releases/tag/v3.2.0-alpha unti
 
 ```cmake ..```
 
-```make```
+```make  (or more generic all platforms cmake --build . )```
 
 ## Introduction
 
