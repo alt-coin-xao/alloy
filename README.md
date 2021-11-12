@@ -26,6 +26,8 @@ Please use: https://github.com/alt-coin-xao/alloy/releases/tag/v3.2.0-alpha unti
 
 ```cd alloy```
 
+```git switch fixcrashandbuild```
+
 ```mkdir build ; cd build```
 
 ```cmake ..```
