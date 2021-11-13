@@ -4,9 +4,6 @@ Copyright (C) 2021-Now, alloy.hopto Developers.
 Copyright (c) 2017-2018, The Alloy Developers.   
 Portions Copyright (c) 2012-2017, The CryptoNote Developers, The Bytecoin Developers.
 
-Copyright (c) all changes after 1st June 2021.
-
-
 # Download Releases
 http://www.alloy.hopto.org   (coming soon)
 
