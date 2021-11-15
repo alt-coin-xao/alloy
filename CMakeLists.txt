@@ -14,6 +14,10 @@ set(HUNTER_PACKAGE_LOG_INSTALL ON)
 set(HUNTER_BUILD_SHARED_LIBS OFF)
 set(HUNTER_KEEP_PACKAGE_SOURCE ON)
 set(CMAKE_FIND_DEBUG_MODE ON)
+set(MINIUPNPC_USE_STATIC_LIBS ON)
+
+#set(Boost_USE_STATIC_LIBS ON)
+#set(Boost_USE_MULTITHREADED ON)
 
 set(CMAKE_BUILD_TYPE ${HUNTER_CONFIGURATION_TYPES})
 set(BUILD_SHARED_LIBS ${HUNTER_BUILD_SHARED_LIBS})
@@ -58,7 +62,7 @@ find_package(miniupnpc CONFIG REQUIRED)
 ## Fetch rocksdb
 ##
 hunter_add_package(rocksdb)
-find_package(RocksDB CONFIG REQUIRED)
+find_package(RocksDB CONFIG REQUIRED) 
 ###
 ###############################################################
 
@@ -76,6 +80,7 @@ set(CMAKE_FIND_DEBUG_MODE FALSE)
 if(MSVC)
 add_definitions("/bigobj /MP /W3 /GS- /D_CRT_SECURE_NO_WARNINGS /wd4996 /wd4345 /D_WIN32_WINNT=0x0600 /DWIN32_LEAN_AND_MEAN /DGTEST_HAS_TR1_TUPLE=0 /D_VARIADIC_MAX=8 /D__SSE4_1__")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:10485760")
+add_definitions("-DBOOST_UUID_RANDOM_GENERATOR_COMPAT")
 elseif(APPLE)
 else()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -fno-inline")

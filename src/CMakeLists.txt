@@ -48,9 +48,11 @@ add_library(Rpc ${Rpc})
 
 add_library(CryptoNoteCore ${CryptoNoteCore})
 target_link_libraries(CryptoNoteCore Boost::boost)
+target_include_directories(CryptoNoteCore PUBLIC Boost_INCLUDE_DIR)
 
 add_library(P2P ${CryptoNoteProtocol} ${P2p})
 target_link_libraries(P2P Boost::boost)
+target_include_directories(P2P PUBLIC Boost_INCLUDE_DIR)
 
 add_dependencies(P2P version)
 add_dependencies(Rpc version)
@@ -61,7 +63,8 @@ target_link_libraries(Wallet ${CMAKE_THREAD_LIBS_INIT})
 
 add_executable(Daemon ${Daemon})
 add_dependencies(Daemon version)
-target_link_libraries(Daemon P2P Rpc Serialization System Http Logging CryptoNoteCore Crypto Common miniupnpc::miniupnpc RocksDB::rocksdb Boost::program_options Boost::filesystem Boost::boost)
+target_link_libraries(Daemon P2P Rpc Serialization System Http Logging CryptoNoteCore Crypto Common miniupnpc::miniupnpc RocksDB::rocksdb Boost::program_options Boost::filesystem Boost::boost Bcrypt)
+target_include_directories(Daemon PUBLIC Boost_INCLUDE_DIR)
 
 add_executable(SimpleWallet ${SimpleWallet})
 add_dependencies(SimpleWallet version)
