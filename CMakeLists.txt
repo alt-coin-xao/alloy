@@ -27,10 +27,15 @@ set(BUILD_SHARED_LIBS ${HUNTER_BUILD_SHARED_LIBS})
 #set(CMAKE_SKIP_PACKAGE_ALL_DEPENDENCY ON)
 #set(CMAKE_SUPPRESS_REGENERATION ON)
 
+#HunterGate(
+#    U R L  "https://github.com/glencjones/hunter/archive/refs/tags/v0.23.314-alloy-1.tar.gz"
+#    S H A 1 "4549223ba9d965c1cd332b2e99d566cfe010e06a"
+#)
+
 HunterGate(
     URL  "https://github.com/glencjones/hunter/archive/refs/tags/v0.23.314-alloy-1.tar.gz"
     SHA1 "4549223ba9d965c1cd332b2e99d566cfe010e06a"
-)
+    )
 
 execute_process(
   COMMAND git log -1 --pretty=format:%h
