@@ -43,6 +43,28 @@ execute_process(
   OUTPUT_VARIABLE VERSION
 )
 
+execute_process(
+  COMMAND git describe --tags --dirty --match "v*"
+  RESULT_VARIABLE RET
+  OUTPUT_VARIABLE DESCRIPTION
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+
+if(RET)
+    message(WARNING "Cannot determine current revision. Make sure that you are building either from a Git working tree or from a source archive.")
+    set(VERSION "${COMMIT}")
+else()
+    string(REGEX MATCH "([0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f])?(-dirty)? $" COMMIT "${DESCRIPTION} ")
+    string(STRIP "${COMMIT}" COMMIT)
+    set(GIT_LABEL "${COMMIT}")
+endif()
+
+message(STATUS "RET ${RET}")
+message(STATUS "DESCRIPTION ${DESCRIPTION}")
+message(STATUS "COMMIT ${COMMIT}")
+message(STATUS "VERSION ${VERSION}")
+message(STATUS "GIT_LABEL ${GIT_LABEL}")
+
 add_definitions(-DGIT_REVISION="${VERSION}")
 
 project(Alloy)
