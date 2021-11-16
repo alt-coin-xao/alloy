@@ -106,9 +106,9 @@ int hashes=0;
       Crypto::Hash hash = cachedBlock.getBlockLongHash(cryptoContext);
 	hashes++;
 
-	float	 telapsed = clock() - t;
+	clock_t	telapsed = clock() - t;
 
-	float 	hs=hashes/(telapsed/CLOCKS_PER_SEC);
+  clock_t 	hs=hashes/(telapsed/CLOCKS_PER_SEC);
 	if (hashes  % 300 ==0) {
 	 m_logger(Logging::INFO) << "Thread:" << threadnum  << "  Hashes per Second:"<<hs <<"      hashes : " << hashes;
 	}

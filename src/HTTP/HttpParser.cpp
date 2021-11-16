@@ -180,8 +180,8 @@ bool HttpParser::readHeader(std::istream& stream, std::string& name, std::string
 
   std::transform(name.begin(), name.end(), name.begin(), ::tolower);
 
-  c = stream.peek();
-  if (c == '\r') {
+  int p = stream.peek();
+  if (p == '\r') {
     stream.get(c).get(c);
     if (c != '\n') {
       throw std::system_error(make_error_code(CryptoNote::error::HttpParserErrorCodes::UNEXPECTED_SYMBOL));
@@ -207,7 +207,7 @@ void HttpParser::readBody(std::istream& stream, std::string& body, const size_t 
   size_t read = 0;
 
   while (stream.good() && read < bodyLen) {
-    body += stream.get();
+    body += static_cast<char>(stream.get());
     ++read;
   }
 
