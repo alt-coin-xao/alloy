@@ -74,7 +74,7 @@ DaemonCommandsHandler::DaemonCommandsHandler(CryptoNote::Core& core, CryptoNote:
 std::string DaemonCommandsHandler::get_commands_str()
 {
   std::stringstream ss;
-  ss << CRYPTONOTE_NAME << " v" << PROJECT_VERSION_LONG << ENDL;
+  ss << CRYPTONOTE_NAME << " " << PROJECT_VERSION_LONG << ENDL;
   ss << "Commands: " << ENDL;
   std::string usage = m_consoleHandler.getUsage();
   boost::replace_all(usage, "\n", "\n  ");
@@ -304,7 +304,7 @@ bool DaemonCommandsHandler::print_pool_sh(const std::vector<std::string>& args)
 }
 //--------------------------------------------------------------------------------
 bool DaemonCommandsHandler::version(const std::vector<std::string>& args) {
-  std::cout << CRYPTONOTE_NAME << " v" << PROJECT_VERSION_LONG << ENDL;
+  std::cout << CRYPTONOTE_NAME << " " << PROJECT_VERSION_LONG << ENDL;
   return true;
 }
 //--------------------------------------------------------------------------------

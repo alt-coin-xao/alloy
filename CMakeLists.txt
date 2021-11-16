@@ -40,32 +40,21 @@ HunterGate(
 execute_process(
   COMMAND git log -1 --pretty=format:%h
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  OUTPUT_VARIABLE VERSION
+  OUTPUT_VARIABLE GIT_VERSION
+  OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
 execute_process(
   COMMAND git describe --tags --dirty --match "v*"
-  RESULT_VARIABLE RET
-  OUTPUT_VARIABLE DESCRIPTION
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_VARIABLE GIT_LABEL
   OUTPUT_STRIP_TRAILING_WHITESPACE
   )
 
-if(RET)
-    message(WARNING "Cannot determine current revision. Make sure that you are building either from a Git working tree or from a source archive.")
-    set(VERSION "${COMMIT}")
-else()
-    string(REGEX MATCH "([0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f])?(-dirty)? $" COMMIT "${DESCRIPTION} ")
-    string(STRIP "${COMMIT}" COMMIT)
-    set(GIT_LABEL "${COMMIT}")
-endif()
-
-message(STATUS "RET ${RET}")
-message(STATUS "DESCRIPTION ${DESCRIPTION}")
-message(STATUS "COMMIT ${COMMIT}")
-message(STATUS "VERSION ${VERSION}")
+message(STATUS "GIT_VERSION ${GIT_VERSION}")
 message(STATUS "GIT_LABEL ${GIT_LABEL}")
 
-add_definitions(-DGIT_REVISION="${VERSION}")
+add_definitions(-DGIT_REVISION="${GIT_VERSION}")
 
 project(Alloy)
 

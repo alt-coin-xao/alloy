@@ -502,7 +502,7 @@ bool simple_wallet::payment_id(const std::vector<std::string> &args) {
 }
 //----------------------------------------------------------------------------------------------------
 bool simple_wallet::version(const std::vector<std::string> &args) {
-  success_msg_writer() << "Build: " << CRYPTONOTE_NAME << " v" << PROJECT_VERSION_LONG;
+  success_msg_writer() << "Build: " << CRYPTONOTE_NAME << " " << PROJECT_VERSION_LONG;
   return true;
 }
 //----------------------------------------------------------------------------------------------------
@@ -1292,12 +1292,12 @@ int main(int argc, char* argv[]) {
       CryptoNote::Currency tmp_currency = CryptoNote::CurrencyBuilder(logManager).currency();
       CryptoNote::simple_wallet tmp_wallet(dispatcher, tmp_currency, logManager);
 
-      std::cout << CRYPTONOTE_NAME << " wallet v" << PROJECT_VERSION_LONG << std::endl;
+      std::cout << CRYPTONOTE_NAME << " wallet " << PROJECT_VERSION_LONG << std::endl;
       std::cout << "Usage: simplewallet [--wallet-file=<file>|--generate-new-wallet=<file>] [--daemon-address=<host>:<port>] [<COMMAND>]";
       std::cout << desc_all << '\n' << tmp_wallet.get_commands_str();
       return false;
     } else if (command_line::get_arg(vm, command_line::arg_version))  {
-      std::cout << CRYPTONOTE_NAME << " wallet v" << PROJECT_VERSION_LONG;
+      std::cout << CRYPTONOTE_NAME << " wallet " << PROJECT_VERSION_LONG;
       return false;
     }
 
@@ -1319,7 +1319,7 @@ int main(int argc, char* argv[]) {
 
   logManager.configure(buildLoggerConfiguration(logLevel, Common::ReplaceExtenstion(argv[0], ".log")));
 
-  logger(INFO, BRIGHT_WHITE) << CRYPTONOTE_NAME << " wallet v" << PROJECT_VERSION_LONG;
+  logger(INFO, BRIGHT_WHITE) << CRYPTONOTE_NAME << " wallet " << PROJECT_VERSION_LONG;
 
   CryptoNote::Currency currency = CryptoNote::CurrencyBuilder(logManager).
     testnet(command_line::get_arg(vm, arg_testnet)).currency();
