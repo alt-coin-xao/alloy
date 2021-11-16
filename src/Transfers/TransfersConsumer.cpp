@@ -215,7 +215,9 @@ uint32_t TransfersConsumer::onNewBlocks(const CompleteBlock* blocks, uint32_t st
   BlockingQueue<Tx> inputQueue(workers * 2);
 
   std::atomic<bool> stopProcessing(false);
-  std::atomic<size_t> emptyBlockCount(0);
+  // TODO (GCJ) Conversion
+  std::atomic<unsigned int> emptyBlockCount(0);
+  //std::atomic<size_t> emptyBlockCount(0);
 
   auto pushingThread = std::async(std::launch::async, [&] {
     for( uint32_t i = 0; i < count && !stopProcessing; ++i) {
@@ -308,7 +310,9 @@ uint32_t TransfersConsumer::onNewBlocks(const CompleteBlock* blocks, uint32_t st
     return std::tie(a.blockInfo.height, a.blockInfo.transactionIndex) < std::tie(b.blockInfo.height, b.blockInfo.transactionIndex);
   });
 
-  uint32_t processedBlockCount = emptyBlockCount;
+  //TODO (GCJ) Remove if warning is removed
+  unsigned int processedBlockCount = emptyBlockCount;
+  //size_t processedBlockCount = emptyBlockCount;
   try {
     for (const auto& tx : preprocessedTransactions) {
       processTransaction(tx.blockInfo, *tx.tx, tx);

@@ -19,6 +19,7 @@
 #if defined(_MSC_VER)
 #include <stdlib.h>
 
+
 #define inline __inline
 
 static inline uint32_t rol32(uint32_t x, int r) {
@@ -78,7 +79,8 @@ static inline uint64_t mul128(uint64_t multiplier, uint64_t multiplicand, uint64
 
 static inline uint64_t div_with_reminder(uint64_t dividend, uint32_t divisor, uint32_t* remainder) {
   dividend |= ((uint64_t)*remainder) << 32;
-  *remainder = dividend % divisor;
+  //TODO (GCJ) Conversion
+  *remainder = (uint32_t)(dividend % divisor);
   return dividend / divisor;
 }
 
