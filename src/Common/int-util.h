@@ -79,8 +79,7 @@ static inline uint64_t mul128(uint64_t multiplier, uint64_t multiplicand, uint64
 
 static inline uint64_t div_with_reminder(uint64_t dividend, uint32_t divisor, uint32_t* remainder) {
   dividend |= ((uint64_t)*remainder) << 32;
-  //TODO (GCJ) Conversion
-  *remainder = (uint32_t)(dividend % divisor);
+  *remainder = dividend % divisor;
   return dividend / divisor;
 }
 
