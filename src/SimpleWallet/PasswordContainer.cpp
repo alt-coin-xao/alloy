@@ -228,7 +228,7 @@ namespace Tools
       }
       else
       {
-        m_password.push_back(static_cast<char>(ch));
+        m_password.push_back(ch);
         std::cout << '*';
       }
     }
