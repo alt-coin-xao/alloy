@@ -23,7 +23,7 @@ https://discord.gg/gmvM5KEHFz
 
 ```cmake ..```
 
-```make  # (or more generic all platforms cmake --build . )```
+```make  # (or more generic all platforms cmake --build . --config Release )```
 
 ## Introduction
 
