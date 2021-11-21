@@ -22,7 +22,7 @@
 
 #include <system_error>
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 
 #include "CryptoNoteCore/ICore.h"
 #include "CryptoNoteCore/TransactionExtra.h"

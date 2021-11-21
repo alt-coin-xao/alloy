@@ -15,8 +15,8 @@
 #include <vector>
 
 #include "Common/int-util.h"
-#include "crypto/hash.h"
-#include "CryptoNoteConfig.h"
+#include "Crypto/hash.h"
+#include "Config/CryptoNoteConfig.h"
 #include "Difficulty.h"
 
 namespace CryptoNote {

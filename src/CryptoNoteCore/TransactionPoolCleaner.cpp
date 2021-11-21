@@ -9,7 +9,7 @@
  */
 
 #include "TransactionPoolCleaner.h"
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 
 
 #include "Common/StringTools.h"

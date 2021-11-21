@@ -10,9 +10,9 @@
 
 #pragma once
 
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 
-#include "crypto/hash.h"
+#include "Crypto/hash.h"
 #include "IWalletLegacy.h"
 #include "ITransfersContainer.h"
 

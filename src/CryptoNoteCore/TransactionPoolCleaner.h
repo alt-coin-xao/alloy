@@ -15,7 +15,7 @@
 #include <chrono>
 #include <unordered_map>
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 
 #include "CryptoNoteCore/ITimeProvider.h"
 #include "ITransactionPool.h"

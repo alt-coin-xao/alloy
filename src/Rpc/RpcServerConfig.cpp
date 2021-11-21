@@ -10,7 +10,7 @@
 
 #include "RpcServerConfig.h"
 #include "Common/CommandLine.h"
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 
 namespace CryptoNote {
 

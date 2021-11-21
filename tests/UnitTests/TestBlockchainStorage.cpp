@@ -10,7 +10,7 @@
 
 #include "gtest/gtest.h"
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 
 #include "CryptoNoteCore/BlockchainStorage.h"
 #include "CryptoNoteCore/MemoryBlockchainStorage.h"

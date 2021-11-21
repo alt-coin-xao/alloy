@@ -12,7 +12,7 @@
 
 #include <functional>
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "CryptoNoteCore/CachedBlock.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"
 

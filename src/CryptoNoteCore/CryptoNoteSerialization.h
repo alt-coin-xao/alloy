@@ -11,9 +11,9 @@
 #pragma once
 
 #include "CryptoNoteBasic.h"
-#include "crypto/chacha8.h"
+#include "Crypto/chacha8.h"
 #include "Serialization/ISerializer.h"
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 
 namespace Crypto {
 

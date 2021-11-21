@@ -17,7 +17,7 @@
 
 #include <System/RemoteContext.h>
 
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 #include "Common/StringTools.h"
 #include "Common/ScopeExit.h"
 #include "CryptoNoteCore/CryptoNoteTools.h"

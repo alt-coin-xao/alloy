@@ -16,7 +16,7 @@
 #include "Common/VectorOutputStream.h"
 #include "Serialization/BinaryOutputStreamSerializer.h"
 #include "Serialization/BinaryInputStreamSerializer.h"
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 #include "CryptoNoteSerialization.h"
 
 

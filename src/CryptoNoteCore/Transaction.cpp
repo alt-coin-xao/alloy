@@ -16,7 +16,7 @@
 
 #include "Account.h"
 #include "CryptoNoteCore/CryptoNoteTools.h"
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 
 #include <boost/optional.hpp>
 #include <numeric>

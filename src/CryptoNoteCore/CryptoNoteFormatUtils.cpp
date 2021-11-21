@@ -23,7 +23,7 @@
 #include "TransactionExtra.h"
 #include "CryptoNoteTools.h"
 
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 
 using namespace Logging;
 using namespace Crypto;

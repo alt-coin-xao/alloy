@@ -15,8 +15,8 @@
 #include <Common/Util.h>
 #include "Common/CommandLine.h"
 #include "Common/StringTools.h"
-#include "crypto/crypto.h"
-#include "CryptoNoteConfig.h"
+#include "Crypto/crypto.h"
+#include "Config/CryptoNoteConfig.h"
 
 using namespace CryptoNote;
 

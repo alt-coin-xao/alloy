@@ -14,8 +14,8 @@
 #include <string>
 #include <vector>
 
-#include "crypto/crypto.h"
-#include "crypto/hash.h"
+#include "Crypto/crypto.h"
+#include "Crypto/hash.h"
 #include "crypto-tests.h"
 #include "../Io.h"
 

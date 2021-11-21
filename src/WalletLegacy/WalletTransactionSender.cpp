@@ -8,7 +8,7 @@
  * file 'LICENSE', which is part of this source code package.
  */
 
-#include "crypto/crypto.h" //for rand()
+#include "Crypto/crypto.h" //for rand()
 #include "CryptoNoteCore/Account.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"
 #include "CryptoNoteCore/CryptoNoteTools.h"

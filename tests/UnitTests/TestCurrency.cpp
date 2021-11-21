@@ -10,7 +10,7 @@
 
 #include "gtest/gtest.h"
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "CryptoNoteCore/Currency.h"
 #include "CryptoNoteCore/TransactionApi.h"
 #include "Logging/ConsoleLogger.h"

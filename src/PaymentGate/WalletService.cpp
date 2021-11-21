@@ -22,7 +22,7 @@
 #include <System/InterruptedException.h>
 #include "Common/Util.h"
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "CryptoNote.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"
 #include "CryptoNoteCore/CryptoNoteBasicImpl.h"

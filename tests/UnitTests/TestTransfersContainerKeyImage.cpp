@@ -12,7 +12,7 @@
 
 #include "IWalletLegacy.h"
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "CryptoNoteCore/Account.h"
 #include "CryptoNoteCore/Currency.h"
 #include "CryptoNoteCore/TransactionApi.h"

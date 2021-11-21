@@ -19,7 +19,7 @@
 
 #include "BlockchainUtils.h"
 
-#include "crypto/hash.h"
+#include "Crypto/hash.h"
 
 #include <CryptoNoteCore/BlockchainStorage.h>
 #include <CryptoNoteCore/CryptoNoteTools.h>

@@ -14,9 +14,9 @@
 #include <string>
 #include <vector>
 #include <boost/utility.hpp>
-#include "../CryptoNoteConfig.h"
-#include "../crypto/hash.h"
-#include "../Logging/LoggerRef.h"
+#include "Config/CryptoNoteConfig.h"
+#include "Crypto/hash.h"
+#include "Logging/LoggerRef.h"
 #include "CachedBlock.h"
 #include "CryptoNoteBasic.h"
 #include "Difficulty.h"

@@ -16,7 +16,7 @@
 #include <vector>
 #include <memory>
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "CryptoNoteCore/CryptoNoteBasic.h"
 #include "CryptoNoteProtocol/CryptoNoteProtocolDefinitions.h"
 #include "Rpc/CoreRpcServerCommandsDefinitions.h"

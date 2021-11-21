@@ -13,7 +13,7 @@
 #include <unordered_set>
 #include "CachedTransaction.h"
 #include <CryptoNote.h>
-#include <crypto/crypto.h>
+#include <Crypto/crypto.h>
 
 namespace CryptoNote {
 

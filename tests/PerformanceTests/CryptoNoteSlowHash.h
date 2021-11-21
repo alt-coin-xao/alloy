@@ -11,7 +11,7 @@
 #pragma once
 
 #include "Common/StringTools.h"
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "CryptoNoteCore/CryptoNoteBasic.h"
 
 class test_cn_slow_hash {

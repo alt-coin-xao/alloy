@@ -15,7 +15,7 @@
 #include <system_error>
 #include <unordered_set>
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "CryptoNoteCore/CryptoNoteBasic.h"
 
 #include "IObservable.h"

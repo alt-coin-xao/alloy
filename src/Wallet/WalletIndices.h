@@ -24,7 +24,7 @@
 #include <boost/multi_index/member.hpp>
 
 #include "Common/FileMappedVector.h"
-#include "crypto/chacha8.h"
+#include "Crypto/chacha8.h"
 
 namespace CryptoNote {
 

@@ -13,7 +13,7 @@
 #include "IWalletLegacy.h"
 
 #include "Common/IInputStream.h"
-#include "crypto/chacha8.h"
+#include "Crypto/chacha8.h"
 #include "Serialization/BinaryInputStreamSerializer.h"
 #include "Transfers/TransfersSynchronizer.h"
 #include "Wallet/WalletIndices.h"

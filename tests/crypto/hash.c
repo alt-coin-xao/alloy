@@ -8,5 +8,5 @@
  * file 'LICENSE', which is part of this source code package.
  */
 
-#include "crypto/hash.c"
-#include "crypto/keccak.c"
+#include "Crypto/hash.c"
+#include "Crypto/keccak.c"

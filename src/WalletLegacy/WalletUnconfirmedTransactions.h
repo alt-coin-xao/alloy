@@ -19,7 +19,7 @@
 #include <boost/functional/hash.hpp>
 
 #include "CryptoNoteCore/CryptoNoteBasic.h"
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 
 namespace CryptoNote {
 class ISerializer;

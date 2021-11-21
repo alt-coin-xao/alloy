@@ -13,7 +13,7 @@
 #include "Transfers/BlockchainSynchronizer.h"
 #include "Transfers/TransfersConsumer.h"
 
-#include "crypto/hash.h"
+#include "Crypto/hash.h"
 #include "CryptoNoteCore/TransactionApi.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"
 #include "CryptoNoteCore/CryptoNoteTools.h"

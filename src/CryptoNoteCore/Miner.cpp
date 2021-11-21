@@ -22,7 +22,7 @@
 #include <boost/limits.hpp>
 #include <boost/utility/value_init.hpp>
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "Common/CommandLine.h"
 #include "Common/StringTools.h"
 #include "Serialization/SerializationTools.h"

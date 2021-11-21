@@ -12,7 +12,7 @@
 
 #include "CryptoTypes.h"
 #include "ITransaction.h"
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 
 #include "CryptoNoteCore/Account.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"

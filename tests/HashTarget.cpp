@@ -12,7 +12,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <limits>
-#include "crypto/hash.h"
+#include "Crypto/hash.h"
 #include "CryptoNoteCore/Difficulty.h"
 
 using namespace std;

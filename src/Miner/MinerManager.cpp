@@ -15,7 +15,7 @@
 #include <System/Timer.h>
 
 #include "Common/StringTools.h"
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 #include "CryptoNoteCore/CachedBlock.h"
 #include "CryptoNoteCore/CryptoNoteTools.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"

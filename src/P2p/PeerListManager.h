@@ -18,7 +18,7 @@
 #include <boost/multi_index/member.hpp>
 
 #include "P2pProtocolTypes.h"
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 
 namespace CryptoNote {
 

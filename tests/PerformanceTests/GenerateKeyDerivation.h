@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 #include "CryptoNoteCore/CryptoNoteBasic.h"
 
 #include "SingleTransactionTestBase.h"

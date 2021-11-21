@@ -16,7 +16,7 @@
 #include "CryptoNoteCore/CryptoNoteBasic.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"
 #include "CryptoNoteCore/CryptoNoteTools.h"
-#include "crypto/crypto.h"
+#include "Crypto/crypto.h"
 
 #include "MultiTransactionTestBase.h"
 

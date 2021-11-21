@@ -15,7 +15,7 @@
 #include <vector>
 #include <unordered_map>
 
-#include "crypto/hash.h"
+#include "Crypto/hash.h"
 #include "CryptoNoteCore/CachedBlock.h"
 #include "CryptoNoteCore/CryptoNoteBasic.h"
 #include "CryptoNoteCore/CryptoNoteBasicImpl.h"

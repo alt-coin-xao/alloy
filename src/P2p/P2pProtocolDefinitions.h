@@ -12,8 +12,8 @@
 
 #include "P2pProtocolTypes.h"
 
-#include "crypto/crypto.h"
-#include "CryptoNoteConfig.h"
+#include "Crypto/crypto.h"
+#include "Config/CryptoNoteConfig.h"
 #include "CryptoNoteCore/CoreStatistics.h"
 
 // new serialization
