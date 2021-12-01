@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+*.log
 
 # Boost
 boost/
@@ -47,3 +48,6 @@ Debug/
 
 # Mac OS
 *.DS_Store
+
+# Project specific
+.projectile
