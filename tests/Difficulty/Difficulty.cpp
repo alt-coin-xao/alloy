@@ -60,6 +60,7 @@ int main(int argc, char *argv[]) {
             begin = end - currency.difficultyWindow();
         }
 
+        // TODO (GCJ) Check this
         uint64_t res = currency.nextDifficulty(
             BLOCK_MAJOR_VERSION_5,
             0,
