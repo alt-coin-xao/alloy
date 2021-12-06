@@ -14,9 +14,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-//include "google/sparse_hash_set"
-//include "google/sparse_hash_map"
-
 namespace boost
 {
   namespace serialization
