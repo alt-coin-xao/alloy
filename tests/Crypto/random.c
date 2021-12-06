@@ -8,7 +8,7 @@
  * file 'LICENSE', which is part of this source code package.
  */
 
-#include "crypto/random.c"
+#include "Crypto/random.c"
 
 #include "crypto-tests.h"
 

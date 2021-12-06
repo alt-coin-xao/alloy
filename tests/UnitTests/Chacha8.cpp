@@ -12,7 +12,7 @@
 
 #include "gtest/gtest.h"
 
-#include "crypto/chacha8.h"
+#include "Crypto/chacha8.h"
 
 namespace
 {

@@ -13,7 +13,7 @@
 #include <vector>
 
 #include "Common/Util.h"
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 #include "CryptoNoteCore/Account.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"
 #include "CryptoNoteCore/CryptoNoteTools.h"

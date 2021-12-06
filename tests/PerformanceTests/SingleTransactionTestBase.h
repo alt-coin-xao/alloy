@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "CryptoNoteConfig.h"
+#include "Config/CryptoNoteConfig.h"
 #include "CryptoNoteCore/Account.h"
 #include "CryptoNoteCore/CryptoNoteBasic.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"

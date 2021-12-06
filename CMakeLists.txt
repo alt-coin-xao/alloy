@@ -61,8 +61,8 @@ project(Alloy)
 ###############################################################
 ##  Fetch Boot
 ##
-hunter_add_package(Boost COMPONENTS program_options filesystem)
-find_package(Boost CONFIG REQUIRED program_options filesystem)
+hunter_add_package(Boost COMPONENTS program_options filesystem serialization chrono)
+find_package(Boost CONFIG REQUIRED program_options filesystem serialization chrono)
 ###
 ###############################################################
 
@@ -128,6 +128,4 @@ add_custom_target(version ALL)
 
 add_subdirectory(src)
 
-## Tests are not working will fix in next release, seems to be previous code issues again.
-## TODO Place correct option handling around tests
-#add_subdirectory(tests)
+add_subdirectory(tests)

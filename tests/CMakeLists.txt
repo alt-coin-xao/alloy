@@ -3,7 +3,7 @@ add_definitions(-DSTATICLIB)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR} ../version)
 
 file(GLOB_RECURSE CoreTests CoreTests/*)
-file(GLOB_RECURSE CryptoTests crypto/*)
+file(GLOB_RECURSE CryptoTests Crypto/*)
 file(GLOB_RECURSE FunctionalTests FunctionalTests/*)
 file(GLOB_RECURSE IntegrationTestLibrary IntegrationTestLib/*)
 file(GLOB_RECURSE IntegrationTests IntegrationTests/*)
@@ -39,11 +39,12 @@ add_executable(DifficultyTests Difficulty/Difficulty.cpp)
 add_executable(HashTargetTests HashTarget.cpp)
 add_executable(HashTests Hash/main.cpp)
 
-target_link_libraries(CoreTests TestGenerator TestsCommon CryptoNoteCore Serialization System Logging Common Crypto BlockchainExplorer UnitTestsLib ${Boost_LIBRARIES})
-target_link_libraries(IntegrationTests IntegrationTestLibrary TestsCommon Wallet NodeRpcProxy InProcessNode P2P Rpc Http Transfers Serialization System CryptoNoteCore Logging Common Crypto BlockchainExplorer gtest upnpc-static ${Boost_LIBRARIES})
-target_link_libraries(NodeRpcProxyTests NodeRpcProxy CryptoNoteCore Rpc Http Serialization System Logging Common Crypto ${Boost_LIBRARIES})
-target_link_libraries(PerformanceTests CryptoNoteCore Serialization Logging Common Crypto ${Boost_LIBRARIES})
-target_link_libraries(SystemTests System gtest_main)
+target_link_libraries(CoreTests TestGenerator TestsCommon CryptoNoteCore Serialization System Logging Common Crypto BlockchainExplorer UnitTestsLib Boost::program_options Boost::filesystem Boost::boost Boost::serialization Boost::boost)
+target_link_libraries(IntegrationTests IntegrationTestLibrary TestsCommon Wallet NodeRpcProxy InProcessNode P2p Rpc Http Transfers Serialization System CryptoNoteCore Logging Common Crypto BlockchainExplorer gtest miniupnpc::miniupnpc Boost::program_options Boost::filesystem Boost::boost)
+target_link_libraries(NodeRpcProxyTests NodeRpcProxy CryptoNoteCore Rpc Http Serialization System Logging Common Crypto Boost::program_options Boost::filesystem Boost::boost)
+target_link_libraries(PerformanceTests CryptoNoteCore Serialization Logging Common Crypto Boost::program_options Boost::filesystem Boost::chrono Boost::boost)
+target_link_libraries(SystemTests System gtest_main GTest::gtest)
+target_link_libraries(P2p CryptoNoteCore Logging miniupnpc::miniupnpc Boost::program_options Boost::filesystem Boost::boost)
 
 if (MSVC)
   target_link_libraries(SystemTests ws2_32)
@@ -51,16 +52,16 @@ if (MSVC)
   target_link_libraries(CoreTests ws2_32)
 endif ()
 
-target_link_libraries(TransfersTests IntegrationTestLibrary TestsCommon Wallet gtest_main InProcessNode NodeRpcProxy P2P Rpc Http BlockchainExplorer CryptoNoteCore Serialization System Logging Transfers Common Crypto upnpc-static ${Boost_LIBRARIES})
-target_link_libraries(UnitTests gtest_main PaymentGate Wallet TestGenerator InProcessNode NodeRpcProxy Rpc P2P upnpc-static Http Transfers Serialization System Logging BlockchainExplorer CryptoNoteCore Common Crypto ${Boost_LIBRARIES})
+target_link_libraries(TransfersTests IntegrationTestLibrary TestsCommon Wallet gtest_main InProcessNode NodeRpcProxy P2p Rpc Http BlockchainExplorer CryptoNoteCore Serialization System Logging Transfers Common Crypto miniupnpc::miniupnpc Boost::program_options Boost::filesystem Boost::boost GTest::gtest)
+target_link_libraries(UnitTests gtest_main PaymentGate Wallet TestGenerator InProcessNode NodeRpcProxy Rpc P2p miniupnpc::miniupnpc Http Transfers Serialization System Logging BlockchainExplorer CryptoNoteCore Common Crypto Boost::program_options Boost::filesystem Boost::boost GTest::gtest)
 
-target_link_libraries(DifficultyTests CryptoNoteCore Serialization Crypto Logging Common ${Boost_LIBRARIES})
+target_link_libraries(DifficultyTests gtest_main CryptoNoteCore Serialization Crypto Logging Common Boost::program_options Boost::filesystem Boost::boost GTest::gtest)
 target_link_libraries(HashTargetTests CryptoNoteCore Crypto)
 target_link_libraries(HashTests Crypto)
 
 #if(NOT MSVC)
 #  set_property(TARGET gtest gtest_main IntegrationTestLibrary IntegrationTests TestGenerator UnitTests SystemTests HashTargetTests TransfersTests APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-undef -Wno-sign-compare")
-#endif()
+#endif() wl wk
 
 add_custom_target(tests DEPENDS IntegrationTests NodeRpcProxyTests PerformanceTests SystemTests TransfersTests UnitTests DifficultyTests HashTargetTests)
 
