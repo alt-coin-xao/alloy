@@ -42,20 +42,9 @@ public:
   }
 
   bool test() {
-
-//    const auto& rawHashingBlock = BinaryArray().get;
-//    const auto& blockLongHash = Crypto::Hash();
-
-    // TODO (GCJ) Confirm what this is testing
-    //Crypto::Hash hash;
-//    Crypto::cn_slow_hash(m_context, &m_data, sizeof(m_data), 0x80000);
-//    Crypto::cn_slow_hash(m_context, &m_data, sizeof(m_data), ITERS_V5);
-//    Crypto::cn_slow_hash(m_context, &m_data, sizeof(m_data),hash.get(), loop_count);
-//    Crypto::cn_slow_hash(m_context, &m_data, sizeof(m_data));
-    //Crypto::cn_slow_hash(m_context, &m_data, sizeof(m_data));
-//    Crypto::cn_slow_hash(m_context, rawHashingBlock.data(), rawHashingBlock.size(), blockLongHash, ITERS_V5);
-//    return blockLongHash == m_expected_hash;
-      return 1;
+    Crypto::Hash hash;
+    Crypto::cn_slow_hash(m_context, &m_data, sizeof(m_data), hash,1);
+    return hash == m_expected_hash;
   }
 
 private:
