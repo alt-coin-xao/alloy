@@ -63,7 +63,9 @@ target_link_libraries(HashTests Crypto)
 #  set_property(TARGET gtest gtest_main IntegrationTestLibrary IntegrationTests TestGenerator UnitTests SystemTests HashTargetTests TransfersTests APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-undef -Wno-sign-compare")
 #endif() wl wk
 
-add_custom_target(tests DEPENDS IntegrationTests NodeRpcProxyTests PerformanceTests SystemTests TransfersTests UnitTests DifficultyTests HashTargetTests)
+add_custom_target(tests ALL
+  COMMAND ${CMAKE_CTEST_COMMAND}
+  DEPENDS CoreTests CryptoTests IntegrationTests NodeRpcProxyTests PerformanceTests SystemTests TransfersTests UnitTests DifficultyTests HashTargetTests)
 
 set_property(TARGET
   tests
@@ -108,4 +110,4 @@ endforeach(hash)
 add_test(HashTargetTests hash_target_tests)
 add_test(SystemTests system_tests)
 ## TODO (GCJ) lookk at these long running tests
-add_test(UnitTests unit_tests  --gtest_filter=*-BcSTest.*Synchron*:BcSTest.outdatedTxsRemovedOnlyAtFirstStart)
+add_test(UnitTests unit_tests --gtest_filter=*-BcSTest.*Synchron*:BcSTest.outdatedTxsRemovedOnlyAtFirstStart)
