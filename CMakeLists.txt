@@ -128,4 +128,10 @@ add_custom_target(version ALL)
 
 add_subdirectory(src)
 
-add_subdirectory(tests)
+if(UNIX)
+  option(BUILD_TESTS "Build Tests" OFF)
+  if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory( tests )
+  endif(BUILD_TESTS)
+endif(UNIX)
