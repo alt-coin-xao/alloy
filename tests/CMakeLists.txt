@@ -65,7 +65,7 @@ target_link_libraries(HashTests Crypto)
 
 add_custom_target(tests ALL
   COMMAND ${CMAKE_CTEST_COMMAND}
-  DEPENDS CoreTests CryptoTests IntegrationTests NodeRpcProxyTests PerformanceTests SystemTests TransfersTests UnitTests DifficultyTests HashTargetTests)
+  DEPENDS CoreTests CryptoTests IntegrationTests NodeRpcProxyTests PerformanceTests SystemTests TransfersTests UnitTests DifficultyTests HashTargetTests HashTests)
 
 set_property(TARGET
   tests
