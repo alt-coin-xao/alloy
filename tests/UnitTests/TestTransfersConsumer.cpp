@@ -954,7 +954,7 @@ public:
   std::vector<CompleteBlock> blocks;
 };
 
-TEST_F(TransfersConsumerPerformanceTest, DISABLED_memory) {
+TEST_F(TransfersConsumerPerformanceTest, memory) {
 
   addAndSubscribeAccounts(10000);
   size_t txcount = generateBlocks(1000, 50, 1);
@@ -976,7 +976,7 @@ TEST_F(TransfersConsumerPerformanceTest, DISABLED_memory) {
 }
 
 
-TEST_F(TransfersConsumerPerformanceTest, DISABLED_performanceTest) {
+TEST_F(TransfersConsumerPerformanceTest, performanceTest) {
 
   const size_t blocksCount = 1000;
   const size_t txPerBlock = 10;

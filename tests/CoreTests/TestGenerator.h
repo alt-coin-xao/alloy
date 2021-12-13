@@ -21,8 +21,9 @@ public:
   TestGenerator(
     const CryptoNote::Currency& currency,
     std::vector<test_event_entry>& eventsRef) :
-      generator(currency),
-      events(eventsRef) {
+    generator(currency),
+    events(eventsRef) {
+
     minerAccount.generate();
     //generator.constructBlock(genesisBlock, minerAccount, 1338224400);
     lastBlock = currency.genesisBlock();
@@ -109,8 +110,8 @@ public:
 
   Logging::LoggerGroup logger;
   test_generator generator;
- CryptoNote::BlockTemplate genesisBlock;
- CryptoNote::BlockTemplate lastBlock;
+  CryptoNote::BlockTemplate genesisBlock;
+  CryptoNote::BlockTemplate lastBlock;
   CryptoNote::AccountBase minerAccount;
   std::vector<test_event_entry>& events;
 };

@@ -131,7 +131,7 @@ TEST(KVSerialize, BigCollection) {
   EXPECT_EQ(ts1, ts2);
 }
 
-TEST(KVSerialize, DISABLED_CollectionOfCollections) {
+TEST(KVSerialize, CollectionOfCollections) {
   TestStruct ts1;
 
   TestElement sample;

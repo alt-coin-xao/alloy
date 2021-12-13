@@ -130,6 +130,7 @@ add_subdirectory(src)
 
 if(UNIX)
   option(BUILD_TESTS "Build Tests" OFF)
+  option(TESTS_WITH_ALL "Add Tests to all" OFF)
   if(BUILD_TESTS)
     enable_testing()
     add_subdirectory( tests )

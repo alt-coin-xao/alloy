@@ -1288,7 +1288,7 @@ TEST_F(WalletLegacyApi, sendAfterFailedTransaction) {
   alice->shutdown();
 }
 
-TEST_F(WalletLegacyApi, DISABLED_loadingBrokenCache) {
+TEST_F(WalletLegacyApi, loadingBrokenCache) {
   alice->initAndGenerate("pass");
 
   std::error_code result;

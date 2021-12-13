@@ -63,9 +63,15 @@ target_link_libraries(HashTests Crypto)
 #  set_property(TARGET gtest gtest_main IntegrationTestLibrary IntegrationTests TestGenerator UnitTests SystemTests HashTargetTests TransfersTests APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-undef -Wno-sign-compare")
 #endif() wl wk
 
+if(TESTS_WITH_ALL)
 add_custom_target(tests ALL
   COMMAND ${CMAKE_CTEST_COMMAND}
   DEPENDS CoreTests CryptoTests IntegrationTests NodeRpcProxyTests PerformanceTests SystemTests TransfersTests UnitTests DifficultyTests HashTargetTests HashTests)
+else()
+add_custom_target(tests
+  COMMAND ${CMAKE_CTEST_COMMAND}
+  DEPENDS CoreTests CryptoTests IntegrationTests NodeRpcProxyTests PerformanceTests SystemTests TransfersTests UnitTests DifficultyTests HashTargetTests HashTests)
+endif(TESTS_WITH_ALL)
 
 set_property(TARGET
   tests

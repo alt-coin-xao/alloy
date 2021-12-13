@@ -1840,7 +1840,7 @@ public:
   }
 };
 
-TEST_F(WalletApi, DISABLED_loadTest) {
+TEST_F(WalletApi, loadTest) {
   using namespace std::chrono;
 
   INodeNoRelay noRelayNode(generator);
@@ -2545,7 +2545,7 @@ TEST_F(WalletApi, fusionManagerEstimateThrowsIfAddressDoesNotBelongToTheContaine
   }
 }
 
-TEST_F(WalletApi, DISABLED_fusionManagerEstimate) {
+TEST_F(WalletApi, fusionManagerEstimate) {
   generateAndUnlockMoney();
 
   ASSERT_EQ(1, alice.getTransactionCount());

@@ -203,8 +203,8 @@ TEST_F(TimerTests, timerIsCancelable) {
   });
 }
 
-// Disabled, because on OS X it is currently impossible to distinguish timer timeout and interrupt
-TEST_F(TimerTests, DISABLED_sleepThrowsOnlyIfTimerIsStoppedBeforeTime1) {
+// Disable, because on OS X it is currently impossible to distinguish timer timeout and interrupt
+TEST_F(TimerTests, sleepThrowsOnlyIfTimerIsStoppedBeforeTime1) {
   contextGroup.spawn([&] {
     Timer t(dispatcher);
     ASSERT_NO_THROW(t.sleep(std::chrono::milliseconds(1)));

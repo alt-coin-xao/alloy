@@ -68,10 +68,10 @@ int main(int argc, char* argv[]) {
     } else if (command_line::get_arg(vm, arg_play_test_data)) {
       PLAY("chain001.dat", gen_simple_chain_001);
     } else if (command_line::get_arg(vm, arg_generate_and_play_test_data)) {
-#define GENERATE_AND_PLAY_EX_2VER(TestCase)                                                                            \
-  GENERATE_AND_PLAY_EX(TestCase(BLOCK_MAJOR_VERSION_1))                                                    \
-  GENERATE_AND_PLAY_EX(TestCase(BLOCK_MAJOR_VERSION_2))
 
+#define GENERATE_AND_PLAY_EX_2VER(TestCase) \
+  GENERATE_AND_PLAY_EX(TestCase(BLOCK_MAJOR_VERSION_1)) \
+  GENERATE_AND_PLAY_EX(TestCase(BLOCK_MAJOR_VERSION_2))
 
       GENERATE_AND_PLAY(GetRandomOutputs);
       GENERATE_AND_PLAY(gen_chain_switch_1);
@@ -85,18 +85,17 @@ int main(int argc, char* argv[]) {
       GENERATE_AND_PLAY(gen_double_spend_in_tx<true>);
       GENERATE_AND_PLAY(gen_double_spend_in_the_same_block<false>);
       GENERATE_AND_PLAY(gen_double_spend_in_different_blocks<false>);
-      //GENERATE_AND_PLAY(gen_double_spend_in_different_blocks<true>);
+      GENERATE_AND_PLAY(gen_double_spend_in_different_blocks<true>);
       GENERATE_AND_PLAY(gen_double_spend_in_different_chains);
       GENERATE_AND_PLAY(gen_double_spend_in_alt_chain_in_the_same_block<false>);
-      //GENERATE_AND_PLAY(gen_double_spend_in_alt_chain_in_the_same_block<true>);
+      GENERATE_AND_PLAY(gen_double_spend_in_alt_chain_in_the_same_block<true>);
       GENERATE_AND_PLAY(gen_double_spend_in_alt_chain_in_different_blocks<false>);
-      //GENERATE_AND_PLAY(gen_double_spend_in_alt_chain_in_different_blocks<true>);
+      GENERATE_AND_PLAY(gen_double_spend_in_alt_chain_in_different_blocks<true>);
 
       GENERATE_AND_PLAY(gen_simple_chain_split_1);
       GENERATE_AND_PLAY(gen_simple_chain_001);
       GENERATE_AND_PLAY(one_block);
-      // GENERATE_AND_PLAY(gen_ring_signature_big); // Takes up to XXX hours (if CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW ==
-      // 10)
+      GENERATE_AND_PLAY(gen_ring_signature_big); // Takes up to XXX hours (if CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW == 10)
 
       //// BlockTemplate verification tests
       GENERATE_AND_PLAY_EX_2VER(TestBlockMajorVersionAccepted);
@@ -129,8 +128,7 @@ int main(int argc, char* argv[]) {
       GENERATE_AND_PLAY_EX_2VER(gen_block_miner_tx_has_out_to_alice);
       GENERATE_AND_PLAY_EX_2VER(gen_block_has_invalid_tx);
       GENERATE_AND_PLAY_EX_2VER(gen_block_is_too_big);
-      // GENERATE_AND_PLAY_EX_2VER(gen_block_invalid_binary_format); // Takes up to 30 minutes, if
-      // CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW == 10
+      GENERATE_AND_PLAY_EX_2VER(gen_block_invalid_binary_format); // Takes up to 30 minutes, if CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW == 10
 
       GENERATE_AND_PLAY(TestMaxSizeOfParentBlock);
       GENERATE_AND_PLAY(TestBigParentBlock);
@@ -160,7 +158,7 @@ int main(int argc, char* argv[]) {
       GENERATE_AND_PLAY(gen_uint_overflow_1);
       GENERATE_AND_PLAY(gen_uint_overflow_2);
 
-      //GENERATE_AND_PLAY(gen_upgrade);
+      GENERATE_AND_PLAY(gen_upgrade);
 
       std::cout << (failed_tests.empty() ? concolor::green : concolor::magenta);
       std::cout << "\nREPORT:\n";

@@ -45,6 +45,7 @@ build/
 tags/
 Release/
 Debug/
+.cache/
 
 # Mac OS
 *.DS_Store
