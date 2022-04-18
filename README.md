@@ -45,4 +45,4 @@ As with many development projects, the repository on Github is considered to be 
 
 # License
 
-Alloy is licensed under the "MIT License", see [LICENSE](LICENSE) for more info..
+Alloy is licensed under the "MIT License", see [LICENSE](LICENSE) for more info.
