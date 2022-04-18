@@ -8,7 +8,7 @@ Portions Copyright (c) 2012-2017, The CryptoNote Developers, The Bytecoin Develo
 http://www.alloy.hopto.org
 
 # GUI Wallet
-Located Here: http://www.alloy.hopto.org  (coming soon)
+Located Here: http://www.alloy.hopto.org
 
 # Discord
 https://discord.gg/gmvM5KEHFz
