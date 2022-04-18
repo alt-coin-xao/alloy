@@ -5,7 +5,7 @@ Copyright (c) 2017-2018, The Alloy Developers.
 Portions Copyright (c) 2012-2017, The CryptoNote Developers, The Bytecoin Developers.
 
 # Download Releases
-http://www.alloy.hopto.org   (coming soon)
+http://www.alloy.hopto.org
 
 # GUI Wallet
 Located Here: http://www.alloy.hopto.org  (coming soon)
