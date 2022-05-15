@@ -7,6 +7,9 @@ Portions Copyright (c) 2012-2017, The CryptoNote Developers, The Bytecoin Develo
 # Download Releases
 http://www.alloy.hopto.org
 
+# Source Code
+https://github.com/alt-coin-xao
+
 # GUI Wallet
 Located Here: http://www.alloy.hopto.org
 
