@@ -58,7 +58,7 @@ target_include_directories(P2p PUBLIC Boost_INCLUDE_DIR)
 
 add_dependencies(P2p version)
 add_dependencies(Rpc version)
-target_link_libraries(P2p CryptoNoteCore Logging miniupnpc::miniupnpc)
+target_link_libraries(P2p CryptoNoteCore Logging miniupnpc::miniupnpc Boost::program_options Boost::filesystem)
 target_link_libraries(Rpc CryptoNoteCore Logging P2p)
 target_link_libraries(CryptoNoteCore Common Logging Crypto P2p Rpc Http Serialization System RocksDB::rocksdb)
 target_link_libraries(Wallet ${CMAKE_THREAD_LIBS_INIT})
