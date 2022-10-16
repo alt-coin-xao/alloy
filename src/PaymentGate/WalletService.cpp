@@ -625,7 +625,6 @@ std::error_code WalletService::getBalance(const std::string& address, uint64_t& 
   try {
     System::EventLock lk(readyEvent);
     logger(Logging::DEBUGGING) << "Getting balance for address " << address;
-
     availableBalance = wallet.getActualBalance(address);
     lockedAmount = wallet.getPendingBalance(address);
   } catch (std::system_error& x) {

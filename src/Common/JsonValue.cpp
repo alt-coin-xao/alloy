@@ -28,6 +28,9 @@ JsonValue::JsonValue(const JsonValue& other) {
   case INTEGER:
     valueInteger = other.valueInteger;
     break;
+  case UNSIGNEDINTEGER:
+    valueUnsignedInteger = other.valueUnsignedInteger;
+    break;
   case NIL:
     break;
   case OBJECT:
@@ -55,6 +58,9 @@ JsonValue::JsonValue(JsonValue&& other) {
     break;
   case INTEGER:
     valueInteger = other.valueInteger;
+    break;
+  case UNSIGNEDINTEGER:
+    valueUnsignedInteger = other.valueUnsignedInteger;
     break;
   case NIL:
     break;
@@ -111,6 +117,9 @@ JsonValue::JsonValue(Bool value) : type(BOOL), valueBool(value) {
 JsonValue::JsonValue(Integer value) : type(INTEGER), valueInteger(value) {
 }
 
+JsonValue::JsonValue(UnsignedInteger value) : type(UNSIGNEDINTEGER), valueUnsignedInteger(value) {
+}
+
 JsonValue::JsonValue(Nil) : type(NIL) {
 }
 
@@ -155,6 +164,9 @@ JsonValue& JsonValue::operator=(const JsonValue& other) {
     case INTEGER:
       valueInteger = other.valueInteger;
       break;
+    case UNSIGNEDINTEGER:
+      valueUnsignedInteger = other.valueUnsignedInteger;
+      break;
     case NIL:
       break;
     case OBJECT:
@@ -181,6 +193,9 @@ JsonValue& JsonValue::operator=(const JsonValue& other) {
       break;
     case INTEGER:
       valueInteger = other.valueInteger;
+      break;
+    case UNSIGNEDINTEGER:
+      valueUnsignedInteger = other.valueUnsignedInteger;
       break;
     case NIL:
       break;
@@ -214,6 +229,9 @@ JsonValue& JsonValue::operator=(JsonValue&& other) {
     case INTEGER:
       valueInteger = other.valueInteger;
       break;
+    case UNSIGNEDINTEGER:
+      valueUnsignedInteger = other.valueUnsignedInteger;
+      break;
     case NIL:
       break;
     case OBJECT:
@@ -243,6 +261,9 @@ JsonValue& JsonValue::operator=(JsonValue&& other) {
       break;
     case INTEGER:
       valueInteger = other.valueInteger;
+      break;
+    case UNSIGNEDINTEGER:
+      valueUnsignedInteger = other.valueUnsignedInteger;
       break;
     case NIL:
       break;
@@ -307,6 +328,16 @@ JsonValue& JsonValue::operator=(Integer value) {
   }
 
   valueInteger = value;
+  return *this;
+}
+
+JsonValue& JsonValue::operator=(UnsignedInteger value) {
+  if (type != UNSIGNEDINTEGER) {
+    destructValue();
+    type = UNSIGNEDINTEGER;
+  }
+
+  valueUnsignedInteger = value;
   return *this;
 }
 
@@ -393,6 +424,10 @@ bool JsonValue::isInteger() const {
   return type == INTEGER;
 }
 
+bool JsonValue::isUnsignedInteger() const {
+  return type == UNSIGNEDINTEGER;
+}
+
 bool JsonValue::isNil() const {
   return type == NIL;
 }
@@ -443,6 +478,14 @@ JsonValue::Integer JsonValue::getInteger() const {
   }
 
   return valueInteger;
+}
+
+JsonValue::UnsignedInteger JsonValue::getUnsignedInteger() const {
+  if (type != UNSIGNEDINTEGER) {
+    throw std::runtime_error("JsonValue type is not INTEGER");
+  }
+
+  return valueUnsignedInteger;
 }
 
 JsonValue::Object& JsonValue::getObject() {
@@ -601,6 +644,9 @@ std::ostream& operator<<(std::ostream& out, const JsonValue& jsonValue) {
     break;
   case JsonValue::INTEGER:
     out << jsonValue.valueInteger;
+    break;
+  case JsonValue::UNSIGNEDINTEGER:
+    out << jsonValue.valueUnsignedInteger;
     break;
   case JsonValue::NIL:
     out << "null";
@@ -863,6 +909,7 @@ void JsonValue::readNumber(std::istream& in, char c) {
       throw std::runtime_error("Unable to parse");
     }
 
+    // TODO (GCJ) Do I need to handle unsigned integer.
     Integer value;
     std::istringstream(text) >> value;
     if (type != INTEGER) {
