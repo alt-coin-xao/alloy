@@ -24,7 +24,7 @@ https://discord.gg/gmvM5KEHFz
 
 ```mkdir build && cd build```
 
-```cmake ..```
+```cmake -DCMAKE_BUILD_TYPE=Release ..```
 
 ```make  # (or more generic all platforms cmake --build . --config Release )```
 
