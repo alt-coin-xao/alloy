@@ -45,6 +45,7 @@ build/
 tags/
 Release/
 Debug/
+scripts/mainnet
 .cache/
 
 # Mac OS
