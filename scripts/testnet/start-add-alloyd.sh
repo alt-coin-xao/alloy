@@ -3,10 +3,9 @@
 CWD=$(dirname $0)
 
 walletname=alloy
-#read -s -p "WALLET: " walletname 
+#read -p "WALLET: " walletname 
 #read -s -p "PASSWORD: " password 
-read -s "testnet host: " hostname 
-echo ""
+read -p "testnet host: " hostname 
 
 WALLET_ADDRESS=$(cat $CWD/${walletname}.address)
 

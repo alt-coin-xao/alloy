@@ -3,8 +3,7 @@
 CWD=$(dirname $0)
 
 #walletname=alloy
-read -s "WALLET: " walletname 
-echo ""
+read -p "WALLET: " walletname 
 read -s -p "PASSWORD: " password 
 echo ""
 
