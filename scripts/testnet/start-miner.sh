@@ -2,6 +2,12 @@
 
 CWD=$(dirname $0)
 
-WALLET_ADDRESS=A4Zdbf7pzpFTkDUX63W8gk2S9ESjnWsQUPNTdD5zdAub8SJqf4u9zczCzbLsN8oawpM8mJt3745Af9jcXnmF66LG6LAVmFE
+walletname=alloy
+#read -s -p "WALLET: " walletname 
+#read -s -p "PASSWORD: " password 
+
+WALLET_ADDRESS=$(cat $CWD/${walletname}.address)
+
+echo "Wallet Address ${WALLET_ADDRESS}"
 
 ${CWD}/../../build/src/miner --address ${WALLET_ADDRESS} --daemon-address localhost:1911 

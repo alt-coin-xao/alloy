@@ -2,4 +2,12 @@
 
 CWD=$(dirname $0)
 
-${CWD}/../../build/src/simplewallet --testnet --daemon-address localhost:1911 $*
+#walletname=alloy
+read -s -p "WALLET: " walletname 
+read -s -p "PASSWORD: " password 
+
+WALLET_ADDRESS=$(cat $CWD/${walletname}.address)
+
+echo "Wallet Address ${WALLET_ADDRESS}"
+
+${CWD}/../../build/src/simplewallet --testnet --daemon-address localhost:1911 --wallet-file $CWD/${walletname}.wallet --password $password
