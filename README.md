@@ -18,6 +18,8 @@ https://discord.gg/gmvM5KEHFz
 
 # How to Compile on Linux (It will download what it needs).
 
+## Release 
+
 ```git clone ```
 
 ```cd alloy```
@@ -27,6 +29,24 @@ https://discord.gg/gmvM5KEHFz
 ```cmake ..```
 
 ```make  # (or more generic all platforms cmake --build . --config Release )```
+
+## Debug
+
+```Debug is a little bit more work at the moment for cmake, some cmake versions have a bug or known feature.```
+```It still works but need to use ccmake to configure the build and forec generation of Makefile```
+
+```ccmake -DCMAKE_BUILD_TYPE=Debug ..  (from reading this depends on version of cmake)```
+
+```make  # (or more generic all platforms cmake --build . --config Debug )```
+
+## Compiler Info
+
+Unlike the previous devs, I'll be taking the path of least resistance.
+
+Windows visual studio Community edition of Windows seems fine, and is easier to support.
+Linux gnu cpp 10.3.1 works fine, 11.3.0 needs more work finding the compiler settings for this code base.
+Mac is till in the pipline, but it will be the commercial compiler (maybe open source).
+
 
 ## Introduction
 

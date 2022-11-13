@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 CWD=$(dirname $0)
 
 #walletname=alloy
