@@ -1,4 +1,4 @@
-add_definitions(-DSTATICLIB)
+#add_definitions(-DSTATICLIB)
 
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR} ../version)
 
@@ -15,11 +15,7 @@ file(GLOB_RECURSE TransfersTests TransfersTests/*)
 file(GLOB_RECURSE UnitTests UnitTests/*)
 file(GLOB_RECURSE TestsCommon Common/*)
 
-file(GLOB_RECURSE CryptoNoteProtocol ../src/CryptoNoteProtocol/*)
-file(GLOB_RECURSE P2p ../src/P2p/*)
-
 source_group("" FILES ${CryptoTests} ${FunctionalTests} ${IntegrationTestLibrary} ${IntegrationTests} ${NodeRpcProxyTests} ${PerformanceTests} ${SystemTests} ${TestGenerator} ${TransfersTests} ${UnitTests})
-source_group("" FILES ${CryptoNoteProtocol} ${P2p})
 
 add_library(IntegrationTestLibrary ${IntegrationTestLibrary})
 add_library(TestGenerator ${TestGenerator})
@@ -34,17 +30,30 @@ add_executable(PerformanceTests ${PerformanceTests})
 add_executable(SystemTests ${SystemTests})
 add_executable(TransfersTests ${TransfersTests})
 add_executable(UnitTests ${UnitTests})
-
 add_executable(DifficultyTests Difficulty/Difficulty.cpp)
 add_executable(HashTargetTests HashTarget.cpp)
 add_executable(HashTests Hash/main.cpp)
 
-target_link_libraries(CoreTests TestGenerator TestsCommon CryptoNoteCore Serialization System Logging Common Crypto BlockchainExplorer UnitTestsLib Boost::program_options Boost::filesystem Boost::boost Boost::serialization Boost::boost)
-target_link_libraries(IntegrationTests IntegrationTestLibrary TestsCommon Wallet NodeRpcProxy InProcessNode P2p Rpc Http Transfers Serialization System CryptoNoteCore Logging Common Crypto BlockchainExplorer gtest miniupnpc::miniupnpc Boost::program_options Boost::filesystem Boost::boost)
-target_link_libraries(NodeRpcProxyTests NodeRpcProxy CryptoNoteCore Rpc Http Serialization System Logging Common Crypto Boost::program_options Boost::filesystem Boost::boost)
-target_link_libraries(PerformanceTests CryptoNoteCore Serialization Logging Common Crypto Boost::program_options Boost::filesystem Boost::chrono Boost::boost)
-target_link_libraries(SystemTests System gtest_main GTest::gtest)
-target_link_libraries(P2p CryptoNoteCore Logging miniupnpc::miniupnpc Boost::program_options Boost::filesystem Boost::boost)
+target_link_libraries(CoreTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC TestGenerator TestsCommon CryptoNoteCore Serialization System Logging Common Crypto BlockchainExplorer UnitTestsLib Boost::program_options Boost::filesystem Boost::boost Boost::serialization Boost::boost)
+
+target_link_libraries(IntegrationTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC IntegrationTestLibrary TestsCommon Wallet NodeRpcProxy InProcessNode P2p Rpc Http Transfers Serialization System CryptoNoteCore Logging Common Crypto BlockchainExplorer miniupnpc::miniupnpc Boost::program_options Boost::filesystem Boost::boost)
+
+target_link_libraries(NodeRpcProxyTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC NodeRpcProxy CryptoNoteCore Rpc Http Serialization System Logging Common Crypto)
+
+target_link_libraries(PerformanceTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC CryptoNoteCore Serialization Logging Common Crypto Boost::program_options Boost::filesystem Boost::chrono Boost::boost)
+
+target_link_libraries(SystemTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC System)
+
 
 if (MSVC)
   target_link_libraries(SystemTests ws2_32)
@@ -52,16 +61,29 @@ if (MSVC)
   target_link_libraries(CoreTests ws2_32)
 endif ()
 
-target_link_libraries(TransfersTests IntegrationTestLibrary TestsCommon Wallet gtest_main InProcessNode NodeRpcProxy P2p Rpc Http BlockchainExplorer CryptoNoteCore Serialization System Logging Transfers Common Crypto miniupnpc::miniupnpc Boost::program_options Boost::filesystem Boost::boost GTest::gtest)
-target_link_libraries(UnitTests gtest_main PaymentGate Wallet TestGenerator InProcessNode NodeRpcProxy Rpc P2p miniupnpc::miniupnpc Http Transfers Serialization System Logging BlockchainExplorer CryptoNoteCore Common Crypto Boost::program_options Boost::filesystem Boost::boost GTest::gtest)
+target_link_libraries(TransfersTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC IntegrationTestLibrary TestsCommon Wallet InProcessNode NodeRpcProxy P2p Rpc Http BlockchainExplorer CryptoNoteCore Serialization System Logging Transfers Common Crypto miniupnpc::miniupnpc Boost::program_options Boost::filesystem Boost::boost)
 
-target_link_libraries(DifficultyTests gtest_main CryptoNoteCore Serialization Crypto Logging Common Boost::program_options Boost::filesystem Boost::boost GTest::gtest)
-target_link_libraries(HashTargetTests CryptoNoteCore Crypto)
-target_link_libraries(HashTests Crypto)
+target_link_libraries(UnitTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC PaymentGate Wallet TestGenerator InProcessNode NodeRpcProxy Rpc P2p miniupnpc::miniupnpc Http Transfers Serialization System Logging BlockchainExplorer CryptoNoteCore Common Crypto Boost::program_options Boost::filesystem Boost::boost)
 
-#if(NOT MSVC)
-#  set_property(TARGET gtest gtest_main IntegrationTestLibrary IntegrationTests TestGenerator UnitTests SystemTests HashTargetTests TransfersTests APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-undef -Wno-sign-compare")
-#endif() wl wk
+target_link_libraries(DifficultyTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC CryptoNoteCore Serialization Crypto Logging Common Boost::program_options Boost::filesystem Boost::boost)
+
+target_link_libraries(HashTargetTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC CryptoNoteCore Crypto)
+
+target_link_libraries(HashTests
+  PRIVATE GTest::gtest_main GTest::gtest
+  PUBLIC Crypto)
+
+if(NOT MSVC)
+  set_property(TARGET GTest::gtest_main GTest::gtest IntegrationTestLibrary IntegrationTests TestGenerator UnitTests SystemTests HashTargetTests TransfersTests APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-undef -Wno-sign-compare")
+endif()
 
 if(TESTS_WITH_ALL)
 add_custom_target(tests ALL
@@ -115,5 +137,6 @@ foreach(hash IN ITEMS fast slow tree extra-blake extra-groestl extra-jh extra-sk
 endforeach(hash)
 add_test(HashTargetTests hash_target_tests)
 add_test(SystemTests system_tests)
-## TODO (GCJ) lookk at these long running tests
+## TODO (GCJ) look at these long running tests
 add_test(UnitTests unit_tests --gtest_filter=*-BcSTest.*Synchron*:BcSTest.outdatedTxsRemovedOnlyAtFirstStart)
+#add_test(UnitTests unit_tests)

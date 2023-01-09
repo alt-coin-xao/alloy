@@ -77,9 +77,10 @@ void JsonOutputStreamSerializer::endArray() {
   chain.pop_back();
 }
 
+
 bool JsonOutputStreamSerializer::operator()(uint64_t& value, Common::StringView name) {
-  int64_t v = static_cast<int64_t>(value);
-  return operator()(v, name);
+  insertOrPush(*chain.back(), name, value);
+  return true;
 }
 
 bool JsonOutputStreamSerializer::operator()(uint16_t& value, Common::StringView name) {

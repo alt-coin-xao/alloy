@@ -1,36 +1,36 @@
 cmake_minimum_required(VERSION 3.16)
 
-# set(HUNTER_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/hunter" )
-# set(HUNTER_ROOT "${CMAKE_CURRENT_BINARY_DIR}/hunter" )
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE} mode")
+if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+  message(STATUS "Building DEBUG mode")
+  set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "" FORCE)
+  set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g3 -ggdb3" CACHE STRING "" FORCE)
+  set(CMAKE_C_FLAGS_DEBUG "-O0 -g3 -ggdb3" CACHE STRING "" FORCE)
+  SET(HUNTER_CONFIGURATION_TYPES "Debug" CACHE STRING "" FORCE)
+  find_package(Clangd)
+  IF(Clangd_FOUND)
+    message(STATUS "Development (IDE) information added clangd")
+    ADDCLANGDLSP()
+  ENDIF()
+else()
+  message(STATUS "Building RELEASE mode")
+  set(CMAKE_BUILD_TYPE "Release" CACHE STRING "" FORCE)
+  SET(HUNTER_CONFIGURATION_TYPES "Release" CACHE STRING "" FORCE)
+endif()
 
 include("cmake/HunterGate.cmake")
-
-set(HUNTER_NO_TOOLCHAIN_ID_RECALCULATION ON)
-#set(HUNTER_CONFIGURATION_TYPES "Release" CACHE STRING "Hunter build Type" FORCE)
+#set(HUNTER_NO_TOOLCHAIN_ID_RECALCULATION ON)
 set(HUNTER_STATUS_DEBUG OFF)
 set(HUNTER_STATUS_PRINT ON)
-set(HUNTER_PACKAGE_LOG_BUILD ON)
-set(HUNTER_PACKAGE_LOG_INSTALL ON)
+set(HUNTER_PACKAGE_LOG_BUILD OFF)
+set(HUNTER_PACKAGE_LOG_INSTALL OFF)
 set(HUNTER_BUILD_SHARED_LIBS OFF)
-set(HUNTER_KEEP_PACKAGE_SOURCE ON)
-set(CMAKE_FIND_DEBUG_MODE ON)
+set(HUNTER_KEEP_PACKAGE_SOURCE OFF)
+set(CMAKE_FIND_DEBUG_MODE OFF)
+
 set(MINIUPNPC_USE_STATIC_LIBS ON)
-
-#set(Boost_USE_STATIC_LIBS ON)
-#set(Boost_USE_MULTITHREADED ON)
-
-#set(CMAKE_BUILD_TYPE ${HUNTER_CONFIGURATION_TYPES})
-#set(BUILD_SHARED_LIBS ${HUNTER_BUILD_SHARED_LIBS})
-
-#set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-#set(CMAKE_SKIP_INSTALL_RULES ON)
-#set(CMAKE_SKIP_PACKAGE_ALL_DEPENDENCY ON)
-#set(CMAKE_SUPPRESS_REGENERATION ON)
-
-#HunterGate(
-#    U R L  "https://github.com/glencjones/hunter/archive/refs/tags/v0.23.314-alloy-1.tar.gz"
-#    S H A 1 "4549223ba9d965c1cd332b2e99d566cfe010e06a"
-#)
 
 HunterGate(
     URL  "https://github.com/glencjones/hunter/archive/refs/tags/v0.23.314-alloy-1.tar.gz"
@@ -91,18 +91,14 @@ find_package(GTest CONFIG REQUIRED)
 ##
 ###############################################################
 
-#set(CMAKE_FIND_DEBUG_MODE FALSE)
-
 if(MSVC)
 add_definitions("/bigobj /MP /w /W0 /GS- /D_CRT_SECURE_NO_WARNINGS /wd4996 /wd4345 /D_WIN32_WINNT=0x0600 /DWIN32_LEAN_AND_MEAN /DGTEST_HAS_TR1_TUPLE=0 /D_VARIADIC_MAX=8 /D__SSE4_1__")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /STACK:10485760")
 add_definitions("-DBOOST_UUID_RANDOM_GENERATOR_COMPAT")
 elseif(APPLE)
 else()
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -fno-inline")
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wconversion") ## Use this in debugging on linux
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -fno-inline -std=gnu++14")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion") ## If debugging
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -maes -fno-inline -m64")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -maes -fno-inline -std=gnu++14 -m64")
 add_definitions("-D_DEFAULT_SOURCE -D_GNU_SOURCE")
 endif()
 
